@@ -42,15 +42,20 @@ const deepClone = (origin) => {
  * @param flag 是否开启深extend 默认:不开启
  */
 function extendFun (flag = false) {
-  let target =Array.prototype.shift.call(arguments),
+  let [target] =Array.prototype.splice.call(arguments,1,1),
     len = arguments.length;
-  for (let i = 0; i < len; i++) {
+  for (let i = 1; i < len; i++) {
     let curObj = arguments[i];
     for (let key in curObj) {
+      let t = target[key],aim = curObj[key];
+      if(flag &&  typeof t === 'object' && typeof aim === 'object') {
+        target[key] = extendFun(flag,t,aim);
+      }else if (aim){
         target[key] = curObj[key];
+      }
     }
   }
   return target;
 }
-const extendObj = extendFun({a:1},{b:{d:4}},{c:3,b:{f:5,g:6},h:7,a:9});
+const extendObj = extendFun(true,{a:{w:23}},{b:{d:4}},{c:3,b:{f:5,g:6},h:7,a:[23]});
 console.log(extendObj);
