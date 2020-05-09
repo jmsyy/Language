@@ -28,7 +28,9 @@ const objectKey = (arr)=>{
 }
 // console.log(objectKey(baseArr));
 // console.log(objectKey(quoteArr));
-
+/**
+ * 数组深度去重
+ */
 const objectKeyJson = (arr)=>{
   let temporaryObject = {};
   return arr.filter((v,k)=>{

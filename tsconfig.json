@@ -3,8 +3,8 @@
     "outDir": "./built",
     "allowJs": true,
     "target": "es5",
-    "noEmitOnError":false,
+    // "noEmitOnError":false,
     
   },
-  "include": ["./JavaScript/**/*"]
+  "include": ["./ts/**/*"]
 }
